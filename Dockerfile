@@ -1,0 +1,20 @@
+# Base Image
+FROM python:3.10-slim
+
+# Set Working Directory
+WORKDIR /app
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Expose port
+EXPOSE 5000
+
+# Run application
+CMD ["python", "app.py"]
